@@ -374,7 +374,7 @@ function showSignupModal() {
     modal.querySelector('.signup-form').addEventListener('submit', async (e) => {
         e.preventDefault();
         await handleSignup(new FormData(e.target));
-        closeModal();
+        // Não fechar o modal aqui - será fechado após o processamento
     });
 }
 
@@ -494,6 +494,13 @@ async function handleSignup(formData) {
         return;
     }
     
+    // Fechar o modal de cadastro primeiro
+    const modal = document.querySelector('.signup-modal');
+    if (modal) {
+        modal.remove();
+        document.body.style.overflow = '';
+    }
+    
     // Mostrar loading
     showLoadingMessage();
     
@@ -517,6 +524,10 @@ async function handleSignup(formData) {
 
 // Funções de mensagens
 function showLoadingMessage() {
+    // Remover mensagens anteriores
+    const existingMessages = document.querySelectorAll('.loading-message, .success-message, .error-message');
+    existingMessages.forEach(msg => msg.remove());
+    
     const message = document.createElement('div');
     message.className = 'loading-message';
     message.innerHTML = `
@@ -586,6 +597,10 @@ function showLoadingMessage() {
 }
 
 function showErrorMessage(errorText) {
+    // Remover mensagens anteriores
+    const existingMessages = document.querySelectorAll('.loading-message, .success-message, .error-message');
+    existingMessages.forEach(msg => msg.remove());
+    
     const message = document.createElement('div');
     message.className = 'error-message';
     message.innerHTML = `
@@ -650,6 +665,10 @@ function showErrorMessage(errorText) {
 
 // Mensagem de sucesso
 function showSuccessMessage() {
+    // Remover mensagens anteriores
+    const existingMessages = document.querySelectorAll('.loading-message, .success-message, .error-message');
+    existingMessages.forEach(msg => msg.remove());
+    
     const message = document.createElement('div');
     message.className = 'success-message';
     message.innerHTML = `
