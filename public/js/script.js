@@ -86,7 +86,7 @@ function initAnimations() {
     
     // Elementos para animar
     const elementsToAnimate = document.querySelectorAll(
-        '.step, .benefit, .story, .pricing-card, .faq-item'
+        '.step, .benefit, .pricing-card, .faq-item'
     );
     
     elementsToAnimate.forEach(el => {

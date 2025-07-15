@@ -247,21 +247,7 @@ p {
     margin-bottom: var(--spacing-2xl);
 }
 
-.trust-indicators {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
-}
 
-.trust-text {
-    color: var(--text-light);
-    font-size: var(--font-size-sm);
-}
-
-.trust-stars {
-    color: var(--accent-color);
-    font-size: var(--font-size-lg);
-}
 
 /* Animação de Sincronização */
 .sync-animation {
@@ -469,65 +455,7 @@ p {
     margin-top: var(--spacing-md);
 }
 
-/* Casos de Sucesso */
-.success-stories {
-    padding: var(--spacing-4xl) 0;
-    background: var(--background-light);
-}
 
-.stories-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-2xl);
-    margin-top: var(--spacing-3xl);
-}
-
-.story {
-    background: var(--white);
-    padding: var(--spacing-2xl);
-    border-radius: var(--border-radius-xl);
-    box-shadow: var(--shadow-md);
-    text-align: center;
-}
-
-.story-avatar {
-    font-size: var(--font-size-4xl);
-    margin-bottom: var(--spacing-lg);
-}
-
-.story h4 {
-    color: var(--text-dark);
-    margin-bottom: var(--spacing-xs);
-}
-
-.story-role {
-    color: var(--text-light);
-    font-size: var(--font-size-sm);
-    margin-bottom: var(--spacing-lg);
-}
-
-.story blockquote {
-    font-style: italic;
-    color: var(--text-light);
-    margin-bottom: var(--spacing-lg);
-    line-height: 1.6;
-}
-
-.story-results {
-    display: flex;
-    gap: var(--spacing-sm);
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.result {
-    padding: var(--spacing-xs) var(--spacing-sm);
-    background: var(--gradient-primary);
-    color: var(--white);
-    border-radius: var(--border-radius-md);
-    font-size: var(--font-size-xs);
-    font-weight: 600;
-}
 
 /* Preços */
 .pricing {
@@ -858,9 +786,7 @@ p {
         grid-template-columns: 1fr;
     }
     
-    .stories-grid {
-        grid-template-columns: 1fr;
-    }
+
     
     .footer-content {
         grid-template-columns: 1fr 1fr;
