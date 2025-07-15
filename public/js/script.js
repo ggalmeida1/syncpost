@@ -672,14 +672,15 @@ function showSuccessMessage() {
     const message = document.createElement('div');
     message.className = 'success-message';
     message.innerHTML = `
-        <div class="success-content">
-            <div class="success-icon">🎉</div>
-            <h3>Cadastro Realizado com Sucesso!</h3>
-            <p>Enviamos um email com as instruções para começar seu teste gratuito.</p>
-            <button class="btn btn-primary" onclick="this.parentElement.parentElement.remove()">
-                Entendi
-            </button>
-        </div>
+                    <div class="success-content">
+                <div class="success-icon">🎉</div>
+                <h3>Cadastro Realizado com Sucesso!</h3>
+                <p>Estamos em fase beta e trabalhando para lançar em breve! Assim que estivermos no ar, você será um dos primeiros a saber através do email cadastrado.</p>
+                <p><strong>Fique ligado nas novidades! 🚀</strong></p>
+                <button class="btn btn-primary" onclick="this.parentElement.parentElement.remove()">
+                    Entendi
+                </button>
+            </div>
     `;
     
     const successStyles = `
