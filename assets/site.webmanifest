@@ -1,0 +1,29 @@
+{
+    "name": "SyncPost - Multiplique Seu Alcance em Redes Sociais",
+    "short_name": "SyncPost",
+    "description": "Sincronize posts automaticamente em todas as redes sociais. Multiplique seu alcance em 300%, economize 15 horas por semana.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#6366F1",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/assets/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        }
+    ],
+    "categories": ["productivity", "social", "business"],
+    "lang": "pt-BR"
+} 

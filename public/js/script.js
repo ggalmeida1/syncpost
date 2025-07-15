@@ -5,10 +5,11 @@ document.addEventListener('DOMContentLoaded', function() {
     initHeader();
     initFAQ();
     initAnimations();
-
     initSmoothScroll();
     initFormHandling();
     initUrgencyElements();
+    initAccessibility();
+    initSEO();
     
     console.log('SyncPost Landing Page carregada com sucesso!');
 });
@@ -44,24 +45,48 @@ function initHeader() {
 function initFAQ() {
     const faqItems = document.querySelectorAll('.faq-item');
     
-    faqItems.forEach(item => {
+    faqItems.forEach((item, index) => {
         const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        const toggle = item.querySelector('.faq-toggle');
         
-        question.addEventListener('click', () => {
+        // Atualizar atributos ARIA
+        question.setAttribute('aria-expanded', 'false');
+        question.setAttribute('aria-controls', `faq-answer-${index + 1}`);
+        
+        const toggleFAQ = () => {
             const isActive = item.classList.contains('active');
             
             // Fecha todos os outros itens
             faqItems.forEach(otherItem => {
                 if (otherItem !== item) {
                     otherItem.classList.remove('active');
+                    const otherQuestion = otherItem.querySelector('.faq-question');
+                    const otherToggle = otherItem.querySelector('.faq-toggle');
+                    otherQuestion.setAttribute('aria-expanded', 'false');
+                    otherToggle.textContent = '+';
                 }
             });
             
             // Toggle do item atual
             if (isActive) {
                 item.classList.remove('active');
+                question.setAttribute('aria-expanded', 'false');
+                toggle.textContent = '+';
             } else {
                 item.classList.add('active');
+                question.setAttribute('aria-expanded', 'true');
+                toggle.textContent = '−';
+            }
+        };
+        
+        question.addEventListener('click', toggleFAQ);
+        
+        // Suporte a teclado
+        question.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleFAQ();
             }
         });
     });
@@ -947,4 +972,156 @@ setInterval(() => {
         trackEvent('Time_On_Page', { seconds: timeOnPage });
     }
 }, 10000);
+
+// Melhorias de Acessibilidade
+function initAccessibility() {
+    // Navegação por teclado para FAQ
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+        question.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                question.click();
+            }
+        });
+    });
+    
+    // Skip to content link
+    const skipLink = document.createElement('a');
+    skipLink.href = '#hero-title';
+    skipLink.textContent = 'Pular para o conteúdo principal';
+    skipLink.className = 'skip-link';
+    skipLink.style.cssText = `
+        position: absolute;
+        top: -40px;
+        left: 6px;
+        background: #6366F1;
+        color: white;
+        padding: 8px;
+        text-decoration: none;
+        border-radius: 4px;
+        z-index: 1001;
+        transition: top 0.3s;
+    `;
+    
+    skipLink.addEventListener('focus', () => {
+        skipLink.style.top = '6px';
+    });
+    
+    skipLink.addEventListener('blur', () => {
+        skipLink.style.top = '-40px';
+    });
+    
+    document.body.insertBefore(skipLink, document.body.firstChild);
+    
+    // Melhorar contraste de foco
+    const focusableElements = document.querySelectorAll('a, button, input, textarea, select, [tabindex]');
+    focusableElements.forEach(el => {
+        el.addEventListener('focus', () => {
+            el.style.outline = '2px solid #6366F1';
+            el.style.outlineOffset = '2px';
+        });
+        
+        el.addEventListener('blur', () => {
+            el.style.outline = '';
+            el.style.outlineOffset = '';
+        });
+    });
+}
+
+// Melhorias de SEO
+function initSEO() {
+    // Lazy loading para imagens
+    const images = document.querySelectorAll('img[data-src]');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+    
+    images.forEach(img => imageObserver.observe(img));
+    
+    // Preload de recursos críticos
+    const criticalResources = [
+        '/assets/logo.svg',
+        '/css/style.css'
+    ];
+    
+    criticalResources.forEach(resource => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.href = resource;
+        link.as = resource.endsWith('.css') ? 'style' : 'image';
+        document.head.appendChild(link);
+    });
+    
+    // Structured data para breadcrumbs
+    const breadcrumbData = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Início",
+                "item": "https://syncpost.com.br/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Como Funciona",
+                "item": "https://syncpost.com.br/#como-funciona"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Benefícios",
+                "item": "https://syncpost.com.br/#beneficios"
+            },
+            {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "Preços",
+                "item": "https://syncpost.com.br/#precos"
+            }
+        ]
+    };
+    
+    const breadcrumbScript = document.createElement('script');
+    breadcrumbScript.type = 'application/ld+json';
+    breadcrumbScript.textContent = JSON.stringify(breadcrumbData);
+    document.head.appendChild(breadcrumbScript);
+    
+    // Meta tags dinâmicas para redes sociais
+    updateSocialMetaTags();
+}
+
+// Atualizar meta tags para redes sociais
+function updateSocialMetaTags() {
+    const metaTags = {
+        'og:title': 'SyncPost - Multiplique Seu Alcance em 5 Minutos',
+        'og:description': 'Sincronize posts automaticamente em todas as redes sociais. Multiplique seu alcance em 300%, economize 15 horas por semana e conquiste milhares de novos seguidores.',
+        'og:image': 'https://syncpost.com.br/assets/og-image.jpg',
+        'og:url': window.location.href,
+        'twitter:title': 'SyncPost - Multiplique Seu Alcance em 5 Minutos',
+        'twitter:description': 'Sincronize posts automaticamente em todas as redes sociais. Multiplique seu alcance em 300%, economize 15 horas por semana e conquiste milhares de novos seguidores.',
+        'twitter:image': 'https://syncpost.com.br/assets/twitter-image.jpg'
+    };
+    
+    Object.entries(metaTags).forEach(([property, content]) => {
+        let meta = document.querySelector(`meta[property="${property}"]`);
+        if (!meta) {
+            meta = document.createElement('meta');
+            meta.setAttribute('property', property);
+            document.head.appendChild(meta);
+        }
+        meta.setAttribute('content', content);
+    });
+}
 

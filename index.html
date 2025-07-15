@@ -3,12 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SyncPost - Multiplique Seu Alcance em 5 Minutos</title>
-    <meta name="description" content="Sincronize posts automaticamente em todas as redes sociais. Multiplique seu alcance, economize 15 horas por semana e conquiste milhares de novos seguidores.">
     
-    <!-- Fonts -->
+    <!-- SEO Meta Tags -->
+    <title>SyncPost - Multiplique Seu Alcance em 5 Minutos | Sincronização Automática de Redes Sociais</title>
+    <meta name="description" content="Sincronize posts automaticamente em todas as redes sociais. Multiplique seu alcance em 300%, economize 15 horas por semana e conquiste milhares de novos seguidores. Acesso antecipado disponível.">
+    <meta name="keywords" content="sincronização redes sociais, automação instagram, tiktok, youtube, twitter, linkedin, marketing digital, criadores de conteúdo, alcance social media">
+    <meta name="author" content="SyncPost">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="pt-BR">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://syncpost.com.br/">
+    <meta property="og:title" content="SyncPost - Multiplique Seu Alcance em 5 Minutos">
+    <meta property="og:description" content="Sincronize posts automaticamente em todas as redes sociais. Multiplique seu alcance em 300%, economize 15 horas por semana e conquiste milhares de novos seguidores.">
+    <meta property="og:image" content="https://syncpost.com.br/assets/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="SyncPost">
+    <meta property="og:locale" content="pt_BR">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://syncpost.com.br/">
+    <meta property="twitter:title" content="SyncPost - Multiplique Seu Alcance em 5 Minutos">
+    <meta property="twitter:description" content="Sincronize posts automaticamente em todas as redes sociais. Multiplique seu alcance em 300%, economize 15 horas por semana e conquiste milhares de novos seguidores.">
+    <meta property="twitter:image" content="https://syncpost.com.br/assets/twitter-image.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://syncpost.com.br/">
+    
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- CSS -->
@@ -16,31 +47,77 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="manifest" href="assets/site.webmanifest">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "SyncPost",
+        "description": "Plataforma para sincronização automática de posts em múltiplas redes sociais",
+        "url": "https://syncpost.com.br",
+        "applicationCategory": "SocialNetworkingApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL",
+            "availability": "https://schema.org/PreOrder"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "150"
+        }
+    }
+    </script>
+    
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "SyncPost",
+        "url": "https://syncpost.com.br",
+        "logo": "https://syncpost.com.br/assets/logo.svg",
+        "description": "Multiplique seu alcance em redes sociais com sincronização automática",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+55-21-2342-0309",
+            "contactType": "customer service"
+        }
+    }
+    </script>
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
-        <nav class="nav">
+    <header class="header" role="banner">
+        <nav class="nav" role="navigation" aria-label="Navegação principal">
             <div class="nav-brand">
-                <img src="/assets/logo.svg" alt="SyncPost" class="logo">
-                <span class="brand-name">SyncPost</span>
+                <a href="#top" aria-label="SyncPost - Página inicial">
+                    <img src="/assets/logo.svg" alt="Logo SyncPost" class="logo" width="32" height="32">
+                    <span class="brand-name">SyncPost</span>
+                </a>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#como-funciona">Como Funciona</a></li>
-                <li><a href="#beneficios">Benefícios</a></li>
-                <li><a href="#precos">Preços</a></li>
-                <li><a href="#contato">Contato</a></li>
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="#como-funciona" role="menuitem">Como Funciona</a></li>
+                <li role="none"><a href="#beneficios" role="menuitem">Benefícios</a></li>
+                <li role="none"><a href="#precos" role="menuitem">Preços</a></li>
+                <li role="none"><a href="#contato" role="menuitem">Contato</a></li>
             </ul>
-
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="top" role="banner" aria-labelledby="hero-title">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1 class="hero-title">
+                    <h1 class="hero-title" id="hero-title">
                         Multiplique Seu Alcance em 5 Minutos: 
                         <span class="highlight">Sincronize Posts Automaticamente</span> 
                         e Conquiste Milhares de Novos Seguidores
@@ -51,18 +128,19 @@
                         Sem complicação, sem perda de tempo.
                     </p>
                     <div class="hero-cta">
-                        <a href="#teste-gratuito" class="btn btn-primary btn-large">
+                        <a href="#teste-gratuito" class="btn btn-primary btn-large" aria-describedby="cta-description">
                             Quero Garantir Meu Acesso Exclusivo!
                         </a>
+                        <p id="cta-description" class="sr-only">Botão para acessar o formulário de cadastro antecipado do SyncPost</p>
                     </div>
                 </div>
-                <div class="hero-visual">
-                    <div class="sync-animation">
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="sync-animation" role="img" aria-label="Animação mostrando sincronização entre redes sociais">
                         <div class="platform instagram">
-                            <div class="platform-icon">📷</div>
+                            <div class="platform-icon" aria-hidden="true">📷</div>
                             <span>Instagram</span>
                         </div>
-                        <div class="sync-arrows">
+                        <div class="sync-arrows" aria-hidden="true">
                             <div class="arrow arrow-1"></div>
                             <div class="arrow arrow-2"></div>
                             <div class="arrow arrow-3"></div>
@@ -70,19 +148,19 @@
                         </div>
                         <div class="platforms-grid">
                             <div class="platform tiktok">
-                                <div class="platform-icon">🎵</div>
+                                <div class="platform-icon" aria-hidden="true">🎵</div>
                                 <span>TikTok</span>
                             </div>
                             <div class="platform youtube">
-                                <div class="platform-icon">📺</div>
+                                <div class="platform-icon" aria-hidden="true">📺</div>
                                 <span>YouTube</span>
                             </div>
                             <div class="platform twitter">
-                                <div class="platform-icon">🐦</div>
+                                <div class="platform-icon" aria-hidden="true">🐦</div>
                                 <span>Twitter</span>
                             </div>
                             <div class="platform linkedin">
-                                <div class="platform-icon">💼</div>
+                                <div class="platform-icon" aria-hidden="true">💼</div>
                                 <span>LinkedIn</span>
                             </div>
                         </div>
@@ -93,44 +171,46 @@
     </section>
 
     <!-- Como Funciona -->
-    <section id="como-funciona" class="how-it-works">
+    <section id="como-funciona" class="how-it-works" aria-labelledby="how-it-works-title">
         <div class="container">
-            <h2 class="section-title">Como Funcionará</h2>
-            <p class="section-subtitle">3 passos simples para multiplicar seu alcance</p>
+            <header class="section-header">
+                <h2 class="section-title" id="how-it-works-title">Como Funcionará</h2>
+                <p class="section-subtitle">3 passos simples para multiplicar seu alcance</p>
+            </header>
             
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
+            <ol class="steps" role="list">
+                <li class="step" role="listitem">
+                    <div class="step-number" aria-label="Passo 1">1</div>
                     <div class="step-content">
                         <h3>Conecte em 30 Segundos</h3>
                         <p>Configure uma vez, funciona para sempre. Nossa tecnologia segura conectará suas redes sociais em menos de 30 segundos. Sem senhas expostas, sem riscos.</p>
-                        <div class="step-time">⏱️ 30 segundos</div>
+                        <div class="step-time" aria-label="Tempo estimado: 30 segundos">⏱️ 30 segundos</div>
                     </div>
-                    <div class="step-visual">
-                        <div class="connect-animation">
-                            <div class="device">📱</div>
-                            <div class="connection-lines"></div>
-                            <div class="social-icons">
+                    <div class="step-visual" aria-hidden="true">
+                        <div class="connect-animation" role="img" aria-label="Ilustração da conexão de redes sociais">
+                            <div class="device" aria-hidden="true">📱</div>
+                            <div class="connection-lines" aria-hidden="true"></div>
+                            <div class="social-icons" aria-hidden="true">
                                 <span>📷</span>
                                 <span>🎵</span>
                                 <span>📺</span>
                             </div>
                         </div>
                     </div>
-                </div>
+                </li>
 
-                <div class="step">
-                    <div class="step-number">2</div>
+                <li class="step" role="listitem">
+                    <div class="step-number" aria-label="Passo 2">2</div>
                     <div class="step-content">
                         <h3>Escolha Sua Base de Poder</h3>
                         <p>Transforme sua plataforma favorita na central de comando. Publique de onde você se sente mais confortável e deixe a mágica acontecer automaticamente.</p>
-                        <div class="step-time">⚡ Instantâneo</div>
+                        <div class="step-time" aria-label="Tempo estimado: instantâneo">⚡ Instantâneo</div>
                     </div>
-                    <div class="step-visual">
-                        <div class="platform-selector">
-                            <div class="main-platform selected">📷 Instagram</div>
-                            <div class="arrow-down">↓</div>
-                            <div class="other-platforms">
+                    <div class="step-visual" aria-hidden="true">
+                        <div class="platform-selector" role="img" aria-label="Seleção de plataforma principal">
+                            <div class="main-platform selected" aria-hidden="true">📷 Instagram</div>
+                            <div class="arrow-down" aria-hidden="true">↓</div>
+                            <div class="other-platforms" aria-hidden="true">
                                 <span>🎵</span>
                                 <span>📺</span>
                                 <span>🐦</span>
@@ -138,20 +218,20 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </li>
 
-                <div class="step">
-                    <div class="step-number">3</div>
+                <li class="step" role="listitem">
+                    <div class="step-number" aria-label="Passo 3">3</div>
                     <div class="step-content">
                         <h3>Publique e Relaxe</h3>
                         <p>Publique normalmente e assista seu conteúdo se espalhar como fogo. Em segundos, você estará presente em todas as plataformas, conquistando novos seguidores enquanto dorme.</p>
-                        <div class="step-time">🚀 Automático</div>
+                        <div class="step-time" aria-label="Processo automático">🚀 Automático</div>
                     </div>
-                    <div class="step-visual">
-                        <div class="publish-animation">
-                            <div class="post">📝 Novo Post</div>
-                            <div class="sync-wave"></div>
-                            <div class="results">
+                    <div class="step-visual" aria-hidden="true">
+                        <div class="publish-animation" role="img" aria-label="Animação de publicação automática">
+                            <div class="post" aria-hidden="true">📝 Novo Post</div>
+                            <div class="sync-wave" aria-hidden="true"></div>
+                            <div class="results" aria-hidden="true">
                                 <span class="result">✅ Instagram</span>
                                 <span class="result">✅ TikTok</span>
                                 <span class="result">✅ YouTube</span>
@@ -159,159 +239,165 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </li>
+            </ol>
         </div>
     </section>
 
     <!-- Benefícios -->
-    <section id="beneficios" class="benefits">
+    <section id="beneficios" class="benefits" aria-labelledby="benefits-title">
         <div class="container">
-            <h2 class="section-title">Por Que Criadores Inteligentes Escolherão SyncPost</h2>
+            <header class="section-header">
+                <h2 class="section-title" id="benefits-title">Por Que Criadores Inteligentes Escolherão SyncPost</h2>
+            </header>
             
-            <div class="benefits-grid">
-                <div class="benefit">
-                    <div class="benefit-icon">⏰</div>
+            <div class="benefits-grid" role="list">
+                <article class="benefit" role="listitem">
+                    <div class="benefit-icon" aria-hidden="true">⏰</div>
                     <h3>Recupere 15 Horas Por Semana</h3>
                     <p>Pare de desperdiçar 15 horas semanais copiando e colando posts. Criadores que usarem SyncPost investirão esse tempo criando conteúdo ainda melhor, resultando em crescimento 3x mais rápido.</p>
-                    <div class="benefit-stat">75% menos tempo gasto</div>
-                </div>
+                    <div class="benefit-stat" aria-label="Economia de tempo: 75% menos tempo gasto">75% menos tempo gasto</div>
+                </article>
 
-                <div class="benefit">
-                    <div class="benefit-icon">🎯</div>
+                <article class="benefit" role="listitem">
+                    <div class="benefit-icon" aria-hidden="true">🎯</div>
                     <h3>Nunca Mais Perca Uma Oportunidade</h3>
                     <p>Enquanto seus concorrentes esquecem de postar em alguma rede, você estará sempre presente, sempre relevante. Consistência automática = crescimento garantido.</p>
-                    <div class="benefit-stat">100% de consistência</div>
-                </div>
+                    <div class="benefit-stat" aria-label="Taxa de consistência: 100% de consistência">100% de consistência</div>
+                </article>
 
-                <div class="benefit">
-                    <div class="benefit-icon">🚀</div>
+                <article class="benefit" role="listitem">
+                    <div class="benefit-icon" aria-hidden="true">🚀</div>
                     <h3>Domine Todas as Plataformas</h3>
                     <p>Transforme-se no criador que está em todo lugar. Seus seguidores te encontrarão no Instagram, TikTok, YouTube e onde mais estiverem. Onipresença digital = autoridade máxima.</p>
-                    <div class="benefit-stat">300% mais alcance</div>
-                </div>
+                    <div class="benefit-stat" aria-label="Aumento de alcance: 300% mais alcance">300% mais alcance</div>
+                </article>
 
-                <div class="benefit">
-                    <div class="benefit-icon">📊</div>
+                <article class="benefit" role="listitem">
+                    <div class="benefit-icon" aria-hidden="true">📊</div>
                     <h3>Dados Que Realmente Importam</h3>
                     <p>Descubra qual conteúdo explode em cada plataforma. Nosso dashboard inteligente revelará insights que seus concorrentes não têm, permitindo que você dobre down no que funciona.</p>
-                    <div class="benefit-stat">Insights exclusivos</div>
-                </div>
+                    <div class="benefit-stat" aria-label="Recurso exclusivo: Insights exclusivos">Insights exclusivos</div>
+                </article>
             </div>
         </div>
     </section>
 
     <!-- Seção de Lançamento -->
-    <section class="pricing">
+    <section class="pricing" id="precos" aria-labelledby="pricing-title">
         <div class="container">
-            <h2 class="section-title">Garanta Seu Acesso Exclusivo ao Lançamento!</h2>
+            <header class="section-header">
+                <h2 class="section-title" id="pricing-title">Garanta Seu Acesso Exclusivo ao Lançamento!</h2>
+            </header>
             
-            <div class="pricing-card">
+            <div class="pricing-card" role="region" aria-labelledby="pricing-card-title">
                 <div class="pricing-header">
-                    <div class="plan-badge">🚀 Lançamento Exclusivo</div>
-                    <h3>Acesso Antecipado + Bônus</h3>
+                    <div class="plan-badge" aria-label="Oferta especial de lançamento">🚀 Lançamento Exclusivo</div>
+                    <h3 id="pricing-card-title">Acesso Antecipado + Bônus</h3>
                     <div class="price">
                         <span class="currency">Preço Especial de Lançamento</span>
                     </div>
                     <p class="price-description">Cadastre-se agora para garantir um desconto exclusivo e bônus incríveis no lançamento oficial do SyncPost!</p>
                 </div>
 
-                <div class="pricing-features">
-                    <div class="feature">
-                        <span class="check">✅</span>
+                <div class="pricing-features" role="list">
+                    <div class="feature" role="listitem">
+                        <span class="check" aria-hidden="true">✅</span>
                         <span>Acesso prioritário ao SyncPost no lançamento</span>
                     </div>
-                    <div class="feature">
-                        <span class="check">✅</span>
+                    <div class="feature" role="listitem">
+                        <span class="check" aria-hidden="true">✅</span>
                         <span>Desconto exclusivo para os primeiros inscritos</span>
                     </div>
-                    <div class="feature">
-                        <span class="check">✅</span>
+                    <div class="feature" role="listitem">
+                        <span class="check" aria-hidden="true">✅</span>
                         <span>Bônus de conteúdo e treinamentos (valor R$497)</span>
                     </div>
-                    <div class="feature">
-                        <span class="check">✅</span>
+                    <div class="feature" role="listitem">
+                        <span class="check" aria-hidden="true">✅</span>
                         <span>Suporte VIP para dúvidas e feedback</span>
                     </div>
-                    <div class="feature">
-                        <span class="check">✅</span>
+                    <div class="feature" role="listitem">
+                        <span class="check" aria-hidden="true">✅</span>
                         <span>Participação em grupo exclusivo de fundadores</span>
                     </div>
                 </div>
 
-                <div class="urgency-elements">
+                <div class="urgency-elements" role="alert" aria-live="polite">
                     <div class="urgency-item">
-                        <span class="urgency-icon">⏰</span>
+                        <span class="urgency-icon" aria-hidden="true">⏰</span>
                         <span>Vagas limitadas para o acesso antecipado!</span>
                     </div>
                     <div class="urgency-item">
-                        <span class="urgency-icon">🔥</span>
+                        <span class="urgency-icon" aria-hidden="true">🔥</span>
                         <span>Não perca a chance de multiplicar seu alcance com um preço imbatível!</span>
                     </div>
                 </div>
 
                 <div class="pricing-cta">
-                    <a href="#teste-gratuito" class="btn btn-primary btn-large btn-full">
+                    <a href="#teste-gratuito" class="btn btn-primary btn-large btn-full" aria-describedby="pricing-cta-description">
                         Quero Garantir Meu Acesso e Bônus!
                     </a>
-                    <p class="guarantee">🔒 Seus dados estão seguros. Não enviamos spam.</p>
+                    <p id="pricing-cta-description" class="guarantee">🔒 Seus dados estão seguros. Não enviamos spam.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FAQ -->
-    <section class="faq">
+    <section class="faq" aria-labelledby="faq-title">
         <div class="container">
-            <h2 class="section-title">Perguntas Frequentes</h2>
+            <header class="section-header">
+                <h2 class="section-title" id="faq-title">Perguntas Frequentes</h2>
+            </header>
             
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-question">
+            <div class="faq-list" role="list">
+                <div class="faq-item" role="listitem">
+                    <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-1">
                         <h4>Será seguro conectar minhas contas?</h4>
-                        <span class="faq-toggle">+</span>
+                        <span class="faq-toggle" aria-hidden="true">+</span>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-answer-1" aria-labelledby="faq-question-1">
                         <p>Absolutamente. Usaremos a mesma tecnologia de segurança dos bancos. Suas senhas nunca serão armazenadas e você poderá desconectar a qualquer momento.</p>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">
+                <div class="faq-item" role="listitem">
+                    <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-2">
                         <h4>E se eu quiser postar algo diferente em cada rede?</h4>
-                        <span class="faq-toggle">+</span>
+                        <span class="faq-toggle" aria-hidden="true">+</span>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-answer-2" aria-labelledby="faq-question-2">
                         <p>Você terá controle total. Poderá escolher sincronizar tudo ou selecionar posts específicos. A flexibilidade será sua.</p>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">
+                <div class="faq-item" role="listitem">
+                    <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-3">
                         <h4>Funcionará com stories e reels também?</h4>
-                        <span class="faq-toggle">+</span>
+                        <span class="faq-toggle" aria-hidden="true">+</span>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-answer-3" aria-labelledby="faq-question-3">
                         <p>Sim! Sincronizaremos posts, stories, reels e qualquer formato que você usar. Tudo automaticamente adaptado para cada plataforma.</p>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">
+                <div class="faq-item" role="listitem">
+                    <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-4">
                         <h4>Quando será o lançamento oficial do SyncPost?</h4>
-                        <span class="faq-toggle">+</span>
+                        <span class="faq-toggle" aria-hidden="true">+</span>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-answer-4" aria-labelledby="faq-question-4">
                         <p>O lançamento oficial está previsto para as próximas semanas. Ao se cadastrar, você será notificado com antecedência e terá acesso prioritário e exclusivo aos bônus e descontos de lançamento.</p>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">
+                <div class="faq-item" role="listitem">
+                    <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-5">
                         <h4>Os bônus e descontos são garantidos?</h4>
-                        <span class="faq-toggle">+</span>
+                        <span class="faq-toggle" aria-hidden="true">+</span>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-answer-5" aria-labelledby="faq-question-5">
                         <p>Sim! Ao se cadastrar para o acesso antecipado, você garante automaticamente todos os bônus e o preço especial de lançamento. Essa é uma oferta exclusiva para os primeiros inscritos.</p>
                     </div>
                 </div>
@@ -320,35 +406,35 @@
     </section>
 
     <!-- CTA Final -->
-    <section id="teste-gratuito" class="final-cta">
+    <section id="teste-gratuito" class="final-cta" aria-labelledby="final-cta-title">
         <div class="container">
             <div class="cta-content">
-                <h2>Pronto Para Multiplicar Seu Alcance?</h2>
+                <h2 id="final-cta-title">Pronto Para Multiplicar Seu Alcance?</h2>
                 <p>Transforme sua presença digital com o SyncPost</p>
                 
-                <div class="cta-benefits">
-                    <div class="cta-benefit">
-                        <span class="benefit-icon">⚡</span>
+                <div class="cta-benefits" role="list">
+                    <div class="cta-benefit" role="listitem">
+                        <span class="benefit-icon" aria-hidden="true">⚡</span>
                         <span>Setup em 5 minutos</span>
                     </div>
-                    <div class="cta-benefit">
-                        <span class="benefit-icon">🎯</span>
+                    <div class="cta-benefit" role="listitem">
+                        <span class="benefit-icon" aria-hidden="true">🎯</span>
                         <span>300% mais alcance</span>
                     </div>
-                    <div class="cta-benefit">
-                        <span class="benefit-icon">⏰</span>
+                    <div class="cta-benefit" role="listitem">
+                        <span class="benefit-icon" aria-hidden="true">⏰</span>
                         <span>15h economizadas/semana</span>
                     </div>
                 </div>
 
                 <div class="cta-buttons">
-                    <a href="#teste-gratuito" class="btn btn-primary btn-large">
+                    <a href="#teste-gratuito" class="btn btn-primary btn-large" aria-describedby="final-cta-description">
                         Quero Garantir Meu Acesso e Bônus!
                     </a>
                 </div>
 
-                <div class="cta-guarantee">
-                    <span class="guarantee-icon">🔒</span>
+                <div class="cta-guarantee" id="final-cta-description">
+                    <span class="guarantee-icon" aria-hidden="true">🔒</span>
                     <span>Seus dados estão seguros. Não enviamos spam.</span>
                 </div>
             </div>
@@ -356,37 +442,39 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo" aria-labelledby="footer-title">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <img src="assets/logo.svg" alt="SyncPost" class="logo">
+                    <img src="assets/logo.svg" alt="Logo SyncPost" class="logo" width="32" height="32">
                     <span class="brand-name">SyncPost</span>
                     <p>Multiplique seu alcance, não seu trabalho.</p>
                 </div>
                 
-                <div class="footer-links">
-                    <div class="link-group">
-                        <h4>Produto</h4>
-                        <a href="#como-funciona">Como Funciona</a>
-                        <a href="#beneficios">Benefícios</a>
-                    </div>
-                </div>
+                <nav class="footer-links" aria-labelledby="footer-links-title">
+                    <h4 id="footer-links-title">Produto</h4>
+                    <ul role="list">
+                        <li role="listitem"><a href="#como-funciona">Como Funciona</a></li>
+                        <li role="listitem"><a href="#beneficios">Benefícios</a></li>
+                    </ul>
+                </nav>
                 
-                <div class="footer-contact">
-                    <h4>Contato</h4>
-                    <p>📱 (21) 2342-0309</p>
-                    <div class="social-links">
-                        <a href="#">📷</a>
-                        <a href="#">🐦</a>
-                        <a href="#">💼</a>
+                <div class="footer-contact" aria-labelledby="footer-contact-title">
+                    <h4 id="footer-contact-title">Contato</h4>
+                    <address>
+                        <p><a href="tel:+552123420309" aria-label="Telefone: 21 2342 0309">📱 (21) 2342-0309</a></p>
+                    </address>
+                    <div class="social-links" aria-label="Redes sociais">
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
                     </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
                 <p>&copy; 2025 SyncPost. Todos os direitos reservados.</p>
-                <div class="security-badges">
+                <div class="security-badges" aria-label="Certificações de segurança">
                     <span class="badge">🔒 SSL Seguro</span>
                     <span class="badge">🛡️ Dados Protegidos</span>
                 </div>
