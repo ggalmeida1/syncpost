@@ -341,34 +341,7 @@ p {
     gap: var(--spacing-lg);
 }
 
-/* Social Proof */
-.social-proof {
-    padding: var(--spacing-3xl) 0;
-    background: var(--white);
-}
 
-.proof-stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--spacing-2xl);
-    text-align: center;
-}
-
-.stat {
-    padding: var(--spacing-xl);
-}
-
-.stat-number {
-    font-size: var(--font-size-4xl);
-    font-weight: 800;
-    color: var(--primary-color);
-    margin-bottom: var(--spacing-sm);
-}
-
-.stat-label {
-    color: var(--text-light);
-    font-weight: 500;
-}
 
 /* Como Funciona */
 .how-it-works {
@@ -879,9 +852,7 @@ p {
         text-align: center;
     }
     
-    .proof-stats {
-        grid-template-columns: repeat(2, 1fr);
-    }
+
     
     .benefits-grid {
         grid-template-columns: 1fr;
@@ -925,9 +896,7 @@ p {
         text-align: center;
     }
     
-    .proof-stats {
-        grid-template-columns: 1fr;
-    }
+
     
     .cta-benefits {
         flex-direction: column;

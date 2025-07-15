@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initHeader();
     initFAQ();
     initAnimations();
-    initCounters();
+
     initSmoothScroll();
     initFormHandling();
     initUrgencyElements();
@@ -115,51 +115,7 @@ function animateSyncArrows() {
     }, 3000);
 }
 
-// Contadores animados
-function initCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    
-    const animateCounter = (counter) => {
-        const target = counter.textContent;
-        const numericTarget = parseInt(target.replace(/[^\d]/g, ''));
-        const suffix = target.replace(/[\d]/g, '');
-        const duration = 2000;
-        const increment = numericTarget / (duration / 16);
-        let current = 0;
-        
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= numericTarget) {
-                current = numericTarget;
-                clearInterval(timer);
-            }
-            
-            if (suffix.includes('M')) {
-                counter.textContent = (current / 1000000).toFixed(1) + 'M+';
-            } else if (suffix.includes('h')) {
-                counter.textContent = Math.floor(current) + 'h';
-            } else if (suffix.includes('%')) {
-                counter.textContent = Math.floor(current) + '%';
-            } else {
-                counter.textContent = Math.floor(current).toLocaleString() + '+';
-            }
-        }, 16);
-    };
-    
-    // Observer para iniciar contadores quando visíveis
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounter(entry.target);
-                counterObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    counters.forEach(counter => {
-        counterObserver.observe(counter);
-    });
-}
+
 
 // Smooth scroll para links internos
 function initSmoothScroll() {
@@ -253,6 +209,7 @@ function showSignupModal() {
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 1rem;
             animation: fadeIn 0.3s ease-out;
         }
         
@@ -271,11 +228,12 @@ function showSignupModal() {
             background: white;
             border-radius: 1rem;
             max-width: 500px;
-            width: 90%;
-            max-height: 90vh;
+            width: 100%;
+            max-height: calc(100vh - 2rem);
             overflow-y: auto;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
             animation: slideUp 0.3s ease-out;
+            margin: auto;
         }
         
         .modal-header {
@@ -359,6 +317,32 @@ function showSignupModal() {
                 transform: translateY(0);
             }
         }
+        
+        /* Responsividade para dispositivos móveis */
+        @media (max-width: 768px) {
+            .modal-content {
+                max-width: none;
+                width: 100%;
+                margin: 0;
+                border-radius: 0.5rem;
+            }
+            
+            .modal-header {
+                padding: 1rem;
+            }
+            
+            .modal-body {
+                padding: 1rem;
+            }
+            
+            .success-content {
+                max-width: none;
+                width: 100%;
+                margin: 0;
+                border-radius: 0.5rem;
+                padding: 1.5rem;
+            }
+        }
         </style>
     `;
     
@@ -380,30 +364,288 @@ function showSignupModal() {
         e.stopPropagation();
     });
     
+    // Aplicar máscaras nos inputs
+    const whatsappInput = modal.querySelector('#whatsapp');
+    whatsappInput.addEventListener('input', (e) => {
+        applyPhoneMask(e.target);
+    });
+    
     // Manipular envio do formulário
-    modal.querySelector('.signup-form').addEventListener('submit', (e) => {
+    modal.querySelector('.signup-form').addEventListener('submit', async (e) => {
         e.preventDefault();
-        handleSignup(new FormData(e.target));
+        await handleSignup(new FormData(e.target));
         closeModal();
     });
 }
 
+// Configuração do Google Sheets
+const GOOGLE_SHEETS_CONFIG = {
+    scriptUrl: 'https://script.google.com/macros/s/AKfycbzp6EhAg089LIfDii1UMbsnIonmVZyWxEkNSVbgaGL3fYP8ADR4HEnyL5GzGaAN72SxdQ/exec', // Substitua pelo seu Script ID
+    sheetName: 'Leads'
+};
+
+// Funções de sanitização
+function sanitizeText(text) {
+    if (!text) return '';
+    return text
+        .trim()
+        .replace(/[<>]/g, '') // Remove caracteres perigosos
+        .replace(/\s+/g, ' ') // Remove espaços extras
+        .substring(0, 100); // Limita a 100 caracteres
+}
+
+function sanitizeEmail(email) {
+    if (!email) return '';
+    return email
+        .trim()
+        .toLowerCase()
+        .replace(/[<>]/g, '')
+        .substring(0, 100);
+}
+
+function sanitizePhone(phone) {
+    if (!phone) return '';
+    // Remove tudo exceto números
+    return phone.replace(/\D/g, '').substring(0, 15);
+}
+
+// Função para aplicar máscara de telefone
+function applyPhoneMask(input) {
+    let value = input.value.replace(/\D/g, '');
+    
+    if (value.length <= 2) {
+        value = `(${value}`;
+    } else if (value.length <= 6) {
+        value = `(${value.substring(0, 2)}) ${value.substring(2)}`;
+    } else if (value.length <= 10) {
+        value = `(${value.substring(0, 2)}) ${value.substring(2, 6)}-${value.substring(6)}`;
+    } else {
+        value = `(${value.substring(0, 2)}) ${value.substring(2, 7)}-${value.substring(7, 11)}`;
+    }
+    
+    input.value = value;
+}
+
+// Função para enviar dados para Google Sheets
+async function sendToGoogleSheets(data) {
+    try {
+        console.log('Enviando dados para Google Sheets:', data);
+        
+        // Usar URLSearchParams para enviar dados como form data
+        const params = new URLSearchParams();
+        params.append('action', 'addLead');
+        params.append('timestamp', new Date().toISOString());
+        params.append('name', data.name);
+        params.append('email', data.email);
+        params.append('whatsapp', data.whatsapp);
+        params.append('source', 'Landing Page');
+        
+        console.log('Parâmetros sendo enviados:', params.toString());
+        
+        const response = await fetch(GOOGLE_SHEETS_CONFIG.scriptUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: params.toString()
+        });
+        
+        console.log('Resposta do Google Sheets:', response);
+        console.log('Status:', response.status);
+        console.log('OK:', response.ok);
+        console.log('Type:', response.type);
+        
+        // Como estamos usando no-cors, não podemos ler a resposta
+        // Mas podemos verificar se a requisição foi feita
+        return true;
+        
+    } catch (error) {
+        console.error('Erro ao enviar para Google Sheets:', error);
+        console.error('Detalhes do erro:', error.message);
+        return false;
+    }
+}
+
 // Manipular cadastro
-function handleSignup(formData) {
-    const data = Object.fromEntries(formData);
+async function handleSignup(formData) {
+    const rawData = Object.fromEntries(formData);
     
-    // Simular envio (aqui você integraria com seu backend)
-    console.log('Dados do cadastro:', data);
+    // Sanitizar dados
+    const sanitizedData = {
+        name: sanitizeText(rawData.name),
+        email: sanitizeEmail(rawData.email),
+        whatsapp: sanitizePhone(rawData.whatsapp)
+    };
     
-    // Mostrar mensagem de sucesso
-    showSuccessMessage();
+    // Validações
+    if (!sanitizedData.name || sanitizedData.name.length < 2) {
+        showErrorMessage('Por favor, insira um nome válido.');
+        return;
+    }
     
-    // Aqui você faria a integração real com seu backend
-    // fetch('/api/signup', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify(data)
-    // });
+    if (!sanitizedData.email || !sanitizedData.email.includes('@')) {
+        showErrorMessage('Por favor, insira um email válido.');
+        return;
+    }
+    
+    if (!sanitizedData.whatsapp || sanitizedData.whatsapp.length < 10) {
+        showErrorMessage('Por favor, insira um WhatsApp válido.');
+        return;
+    }
+    
+    // Mostrar loading
+    showLoadingMessage();
+    
+    // Enviar para Google Sheets
+    const success = await sendToGoogleSheets(sanitizedData);
+    
+    if (success) {
+        showSuccessMessage();
+        
+        // Tracking de conversão (opcional)
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'lead_generated', {
+                'event_category': 'engagement',
+                'event_label': 'form_submit'
+            });
+        }
+    } else {
+        showErrorMessage('Erro ao processar cadastro. Tente novamente.');
+    }
+}
+
+// Funções de mensagens
+function showLoadingMessage() {
+    const message = document.createElement('div');
+    message.className = 'loading-message';
+    message.innerHTML = `
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h3>Processando seu cadastro...</h3>
+            <p>Aguarde um momento.</p>
+        </div>
+    `;
+    
+    const loadingStyles = `
+        <style>
+        .loading-message {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .loading-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            animation: slideUp 0.3s ease-out;
+            margin: auto;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #E5E7EB;
+            border-top: 4px solid #6366F1;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-content h3 {
+            color: #1F2937;
+            margin-bottom: 0.5rem;
+        }
+        
+        .loading-content p {
+            color: #6B7280;
+        }
+        </style>
+    `;
+    
+    document.head.insertAdjacentHTML('beforeend', loadingStyles);
+    document.body.appendChild(message);
+}
+
+function showErrorMessage(errorText) {
+    const message = document.createElement('div');
+    message.className = 'error-message';
+    message.innerHTML = `
+        <div class="error-content">
+            <div class="error-icon">⚠️</div>
+            <h3>Erro no Cadastro</h3>
+            <p>${errorText}</p>
+            <button class="btn btn-primary" onclick="this.parentElement.parentElement.remove()">
+                Tentar Novamente
+            </button>
+        </div>
+    `;
+    
+    const errorStyles = `
+        <style>
+        .error-message {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .error-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            animation: slideUp 0.3s ease-out;
+            margin: auto;
+        }
+        
+        .error-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .error-content h3 {
+            color: #DC2626;
+            margin-bottom: 1rem;
+        }
+        
+        .error-content p {
+            color: #6B7280;
+            margin-bottom: 1.5rem;
+        }
+        </style>
+    `;
+    
+    document.head.insertAdjacentHTML('beforeend', errorStyles);
+    document.body.appendChild(message);
 }
 
 // Mensagem de sucesso
@@ -433,6 +675,7 @@ function showSuccessMessage() {
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 1rem;
             background: rgba(0, 0, 0, 0.8);
             animation: fadeIn 0.3s ease-out;
         }
@@ -443,8 +686,9 @@ function showSuccessMessage() {
             border-radius: 1rem;
             text-align: center;
             max-width: 400px;
-            width: 90%;
+            width: 100%;
             animation: slideUp 0.3s ease-out;
+            margin: auto;
         }
         
         .success-icon {
